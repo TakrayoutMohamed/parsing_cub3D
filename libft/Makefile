@@ -1,0 +1,46 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
+#    Updated: 2023/03/18 00:15:14 by mohtakra         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME=libft.a
+CC=cc
+CFLAGS=-Wall -Wextra -Werror
+RM=rm -f
+SRC = ft_strchr.c ft_strncmp.c ft_strdup.c \
+	ft_strlen.c ft_strtrim.c\
+	ft_putchar_fd.c ft_putstr_fd.c\
+	ft_putendl_fd.c ft_putnbr_fd.c \
+	./get_next_line/get_next_line_utils.c \
+	./get_next_line/get_next_line.c
+
+	
+OBJ = $(SRC:.c=.o)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+		@ar rc $@ $(OBJ)
+		@echo "the libft has ben archived successfully in $(NAME)"
+
+%.o: %.c libft.h ./get_next_line/get_next_line.h
+		@$(CC) -I. -o $@ -c $< $(CFLAGS)
+		@echo "the file $@ has been created from $<"
+
+
+clean:
+		@$(RM) $(OBJ)
+		@echo "all the libft objects has been deleted successfully"
+fclean: clean
+		@$(RM) $(NAME)
+		@echo "the archive $(NAME) has been deleted"
+	
+re: fclean all
+
+.PHONY : clean $(NAME) all fclean re
