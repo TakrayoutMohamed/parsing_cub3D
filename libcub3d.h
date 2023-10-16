@@ -1,5 +1,6 @@
 #ifndef LIBCUB3D_H
 # define LIBCUB3D_H
+# include "./libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
