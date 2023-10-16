@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:44:20 by mohtakra          #+#    #+#             */
-/*   Updated: 2022/10/17 17:48:07 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:20:23 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = 0;
+
+	if (!s)
+		return (NULL);
 	str = (char *) malloc(sizeof(char) * ft_strlen(s) + 1);
 	if (!str)
 		return (NULL);

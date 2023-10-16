@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_freematrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 14:59:52 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/16 16:20:58 by mohtakra         ###   ########.fr       */
+/*   Created: 2023/10/16 16:23:04 by mohtakra          #+#    #+#             */
+/*   Updated: 2023/10/16 16:23:43 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libft.h"
 
-size_t	ft_strlen(const char *s)
+/*free located memory for a matrix*/
+void	ft_freematrix(char **matrix)
 {
-	size_t	i;
+	char	**temp;
 
-	i = 0;
-	if (!s)
-		return (i);
-	while (s[i])
-		i++;
-	return (i);
+	if (!matrix)
+		return ;
+	temp = matrix;
+	while (*matrix)
+	{
+		free(*matrix);
+		matrix++;
+	}
+	matrix = temp;
+	free(matrix);
 }
