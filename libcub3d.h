@@ -2,6 +2,7 @@
 # define LIBCUB3D_H
 # include "./libft/libft.h"
 # include <stdio.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
@@ -48,5 +49,6 @@ typedef struct s_data {
 //here the functions that is going to be used in the parsing
 
 t_cub	*parse_data(int argc, char **argv);
+bool	is_accepted_data(char *argv);
 
 #endif
