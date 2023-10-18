@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:13:46 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/17 17:52:18 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:45:54 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_freematrix(char **matrix);
 char	*ft_strdup(const char *s);
 /*the part two functions declaration*/
 char	**ft_split(char const *s, char c);
+char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
