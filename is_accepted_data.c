@@ -1,4 +1,6 @@
 #include "./libcub3d.h"
+
+//return true if the extention is *.cub 
 bool	is_accepted_extention(char *map)
 {
 	int	len;

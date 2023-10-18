@@ -1,5 +1,26 @@
 #include "./libcub3d.h"
 
+/*join s1 with s2 and free the pointer to s1*/
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*tmp;
+
+	tmp = s1;
+	s1 = ft_strjoin(s1, s2);
+	free(tmp);
+	return (s1);
+}
+
+char	*ft_strtrim_free(char *s1, char *to_trim)
+{
+	char	*tmp;
+
+	tmp = s1;
+	s1 = ft_strtrim(s1, to_trim);
+	free(tmp);
+	return (s1);
+}
+
 t_cub	*initializing_cub_struct(void)
 {
 	t_cub	*cub;
@@ -38,6 +59,7 @@ void	set_textures_paths(t_cub *cub, char *line)
 {
 	char	**matrix;
 
+	line = ft_strtrim_free(line, "\n");
 	matrix = ft_split(line, " ");
 	if (!matrix)
 		return ; //here i should print an error message end exit
@@ -60,11 +82,22 @@ void	set_textures_paths(t_cub *cub, char *line)
 	ft_freematrix(matrix);
 }
 
+void	set_map(t_cub *cub, char *str)
+{
+	cub->map = ft_split(str, "\n");
+	if (cub->map == NULL)
+		return ; //here i should print an error message end exit
+}
+
 void	set_cub_data(t_cub *cub, char *map)
 {
 	char	*line;
+	char	*map_in_str;
 	int		map_fd;
+	int		one_shot;
 
+	one_shot = 1;
+	map_in_str = NULL;
 	map_fd = open(map, O_RDONLY, 0666);
 	if (map_fd == -1)
 	{
@@ -72,24 +105,31 @@ void	set_cub_data(t_cub *cub, char *map)
 		ft_putstr_fd(map,2);
 		exit(EXIT_FAILURE);
 	}
-
 	while (1)
 	{
 		line = get_next_line(map_fd);
 		if (line == NULL)
 			break ;
-		if (ft_strcmp(line, "\n") != 0)
+		if (one_shot == 1 && !is_textures_floor_ceiles_setted(cub))
 		{
-			if (!is_textures_floor_ceiles_setted(cub))
+			if (ft_strcmp(line, "\n") != 0)
 			{
+				// if it enters to here it should take that if the line is not one of
+				// textures  or ceilling or floore than it should write an error message
+				// and exit and that should happen inside the set_textures_paths()
 				set_textures_paths(cub, line);
 			}
-			else
-				set_map(cub, line);
-
+		}
+		else
+		{
+			one_shot = 0;
+			map_in_str = ft_strjoin_free(map_in_str, line);
 		}
 		free(line);
 	}
+	map_in_str = ft_strtrim_free(map_in_str, "\n");
+	//check if the map in str has a sequance of new line than it is not accepted;
+	set_map(cub, map_in_str);
 	close(map_fd);
 }
 
