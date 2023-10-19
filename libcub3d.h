@@ -50,5 +50,6 @@ typedef struct s_data {
 
 t_cub	*parse_data(int argc, char **argv);
 bool	is_accepted_data(char *argv);
+char	**ft_matrixcpy(const char **map);
 
 #endif

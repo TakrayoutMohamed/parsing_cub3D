@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 	t_cub	*map_data;
 
 	map_data = parse_data(argc, argv);
-	printf("here\n");
 	print_data(map_data);
 	return (0);
 }

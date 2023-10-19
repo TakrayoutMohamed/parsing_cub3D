@@ -3,7 +3,7 @@ CC = cc
 CFLAGS=  -Imlx 
 LIBCUB = libcub.a
 LIBFT = ./libft/libft.a
-SRC= parse_data.c is_accepted_data.c
+SRC= parse_data.c is_accepted_data.c ft_matrixcpy.c
 SRC_MAIN = main.c
 OBJ = $(SRC:.c=.o)
 OBJ_MAIN = $(SRC_MAIN:.c=.o)
