@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 CC = cc
 CFLAGS=  -Imlx 
 LIBCUB = libcub.a
@@ -12,14 +12,14 @@ RM = rm -rf
 all : $(NAME)
 
 $(NAME): $(LIBCUB) $(OBJ_MAIN)
-		$(CC) $(OBJ_MAIN) $(LIBCUB) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+		$(CC) $(OBJ_MAIN) $(LIBCUB) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 	@echo "the file $@ has been created from $<"
 
 $(LIBCUB) : $(LIBFT)  $(OBJ)
-		ar rc $@ $(LIBFT) $(OBJ) 
+		ar rc $@  $(OBJ) $(LIBFT)
 
 $(LIBFT) : ./libft/Makefile
 		@make -C ./libft all

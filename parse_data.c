@@ -17,7 +17,7 @@ char	*ft_strtrim_free(char *s1, char *to_trim)
 
 	tmp = s1;
 	s1 = ft_strtrim(s1, to_trim);
-	free(tmp);
+	// free(tmp); /*this may create a leak here*/
 	return (s1);
 }
 
@@ -60,33 +60,51 @@ void	set_textures_paths(t_cub *cub, char *line)
 	char	**matrix;
 
 	line = ft_strtrim_free(line, "\n");
-	matrix = ft_split(line, " ");
+	matrix = ft_split(line, ' ');
 	if (!matrix)
 		return ; //here i should print an error message end exit
 	if (!matrix[0] || !matrix[1])
 		return ; //here i should print an error message end exit
-	if (ft_strcmp(matrix[0], "NO") == 0)
+	if (!cub->no && ft_strcmp(matrix[0], "NO") == 0)
 		cub->no = ft_strdup(matrix[1]);
-	else if (ft_strcmp(matrix[0], "SO") == 0)
+	else if (!cub->so && ft_strcmp(matrix[0], "SO") == 0)
 		cub->so = ft_strdup(matrix[1]);
-	else if (ft_strcmp(matrix[0], "WE") == 0)
+	else if (!cub->we && ft_strcmp(matrix[0], "WE") == 0)
 		cub->we = ft_strdup(matrix[1]);
-	else if (ft_strcmp(matrix[0], "EA") == 0)
+	else if (!cub->ea && ft_strcmp(matrix[0], "EA") == 0)
 		cub->ea = ft_strdup(matrix[1]);
-	else if (ft_strcmp(matrix[0], "F") == 0)
+	else if (!cub->f && ft_strcmp(matrix[0], "F") == 0)
 		cub->f = ft_strdup(matrix[1]);
-	else if (ft_strcmp(matrix[0], "C") == 0)
+	else if (!cub->c && ft_strcmp(matrix[0], "C") == 0)
 		cub->c = ft_strdup(matrix[1]);
 	else
+	{
+		ft_freematrix(matrix);
+		printf("eeeeerrrror from set_textures_paths\n");
+		exit(EXIT_FAILURE);
 		return ; //here i should print an error message end exit
+	}
 	ft_freematrix(matrix);
 }
 
 void	set_map(t_cub *cub, char *str)
 {
-	cub->map = ft_split(str, "\n");
+	cub->map = ft_split(str, '\n');
 	if (cub->map == NULL)
 		return ; //here i should print an error message end exit
+}
+
+bool	has_double_new_line(char *str)
+{
+	if (!str)
+		return (true);
+	while (*str)
+	{
+		if (*str == '\n' && *(str + 1) == '\n')
+			return (true);
+		str++;
+	}
+	return (false);
 }
 
 void	set_cub_data(t_cub *cub, char *map)
@@ -127,10 +145,16 @@ void	set_cub_data(t_cub *cub, char *map)
 		}
 		free(line);
 	}
+	close(map_fd);
 	map_in_str = ft_strtrim_free(map_in_str, "\n");
 	//check if the map in str has a sequance of new line than it is not accepted;
+	if (has_double_new_line(map_in_str))
+	{
+		printf("the map you entered not accepted becouse of double new line\n");
+		/*here i need to free the struct cub and map_in_str*/
+		exit(EXIT_FAILURE);
+	}
 	set_map(cub, map_in_str);
-	close(map_fd);
 }
 
 t_cub	*parse_data(int argc, char **argv)
@@ -147,7 +171,9 @@ t_cub	*parse_data(int argc, char **argv)
 	{
 		exit(EXIT_FAILURE);
 	}
+	printf("after checking is data accepted and nbr of args are good\n");
 	cub = initializing_cub_struct();
+	printf("after checking is data accepted and nbr of args are good\n");
 	set_cub_data(cub, argv[1]);
 	// convert_map_into_string(argv[1]);
 	// split the file by newline
@@ -156,5 +182,5 @@ t_cub	*parse_data(int argc, char **argv)
 		//free the return of the splite by space
 	// get the map value using the last non_null pointer in the matrix
 	// free the matrix which is the return of the split by newline
-
+	return (cub);
 }
