@@ -1,5 +1,26 @@
 #include "./libcub3d.h"
 
+static void	print_matrix(char **matrix)
+{
+	int	i = 0;
+	int j;
+
+	// ft_putchar_fd('{', 1);
+	while (matrix[i])
+	{
+		j = 0;
+		// ft_putchar_fd('[', 1);
+		while (matrix[i][j])
+		{
+			ft_putchar_fd(matrix[i][j], 1);
+			j++;
+		}
+		// ft_putchar_fd(']', 1);
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
+	// ft_putchar_fd('}', 1);
+}
 
 /*join s1 with s2 and free the pointer to s1*/
 char	*ft_strjoin_free(char *s1, char *s2)
@@ -121,7 +142,7 @@ void	check_map(char **map)
 	int		i;
 	int		j;
 
-	copymap = ft_matrixcpy(map);
+	copymap = ft_matrixcpy((const char **) map);
 	i = 0;
 	while (copymap[i])
 	{
@@ -149,11 +170,20 @@ void	check_map(char **map)
 		}
 		j++;
 	}
+	// printf("**********************start map********\n");
+	// print_matrix(copymap);
+	// printf("\n**********************end map********\n");
+	// exit(44);
 	//check the bottom of the map
+	int nbrlines1;
+
+	nbrlines1 = 0;
+	while (map[nbrlines1])
+		nbrlines1++;
 	j = 0;
-	while (copymap[i - 1][j])
+	while (copymap[nbrlines1 - 1][j])
 	{
-		if (copymap[i - 1][j] != '1' && copymap[i - 1][j] != 'y')
+		if (copymap[nbrlines1 - 1][j] != '1' && copymap[nbrlines1 - 1][j] != 'y')
 		{
 			printf("the map is not sorounded by wals bottom\n");
 			ft_freematrix(copymap);
@@ -177,6 +207,7 @@ void	check_map(char **map)
 		}
 		i++;
 	}
+	
 	//check if thier is a space ' ' inside the map 
 	//get how many line in the map 
 	int nbrlines;
@@ -195,36 +226,64 @@ void	check_map(char **map)
 			{
 				if (i > 0 && i < nbrlines)
 				{
-					if (copymap[i - 1][j] == '0')
-						return (0);// here the map not accepted
-					if (copymap[i + 1][j] == '0')
-						return (0);// here the map not accepted
-					if (copymap[i][j + 1] == '0')
-						return (0);// here the map not accepted
-					if (j != 0 && copymap[i][j - 1] == '0')
-						return (0);// here the map not accepted
+					if (ft_strlen(copymap[i - 1]) >= j && copymap[i - 1][j] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (ft_strlen(copymap[i + 1]) >= j && copymap[i + 1][j] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (copymap[i][j + 1] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (j != 0 && copymap[i][j - 1] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
 				}
 				else if (i == 0 && i < nbrlines)
 				{
-					if (copymap[i + 1][j] == '0')
-						return (0);// here the map not accepted
-					if (copymap[i][j + 1] == '0')
-						return (0);// here the map not accepted
-					if (j != 0 && copymap[i][j - 1] == '0')
-						return (0);// here the map not accepted
+					if (ft_strlen(copymap[i + 1]) >= j && copymap[i + 1][j] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (copymap[i][j + 1] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (j != 0 && copymap[i][j - 1] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
 				}
 				else if (i > 0 && i == nbrlines)
 				{
-					if (copymap[i - 1][j] == '0')
-						return (0);// here the map not accepted
-					if (copymap[i][j + 1] == '0')
-						return (0);// here the map not accepted
-					if (j != 0 && copymap[i][j - 1] == '0')
-						return (0);// here the map not accepted
+					if (ft_strlen(copymap[i - 1]) >= j && copymap[i - 1][j] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (copymap[i][j + 1] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
+					if (j != 0 && copymap[i][j - 1] == 'x')
+						(printf("thier is a leak on the map not closed"), exit(1), 0);// here the map not accepted
 				}
 			}
+			j++;
 		}
+		i++;
 	}
+
+
+	//check if thier is a ziro in aline while one of above or under line are shorter
+	i = 0;
+	while (copymap[i])
+	{
+		j = 0;
+		while (copymap[i][j])
+		{
+			if (copymap[i][j] == 'x')
+			{
+				if (i > 0 && (ft_strlen(copymap[i - 1]) - 1) < j)
+				{
+					(printf("thier is a leak on the copymap not closed in the line %d\n", i + 1), exit(1), 0);// here the map not accepted
+				}
+				if (copymap[i + 1] != NULL && (ft_strlen(copymap[i + 1]) - 1) < j)
+				{
+					(printf("thier is a leak on the map not closed in the line %d\n", i + 1), exit(1), 0);// here the map not accepted
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+
+
 	/*check if the map sorrounded by walls or spaces*/
 			/*check if the first str in the map is all ones and spaces*/
 		/*to verify if the map is sourrounded by wals even if its with spaces simply 

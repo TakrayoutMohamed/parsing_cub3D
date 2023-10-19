@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:20:18 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/19 17:33:22 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:52:59 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**ft_matrixcpy(const char **map)
 	{
 		matrix[i] = ft_strdup((const char *)map[i]);
 		if (!matrix[i])
-			return (free_matrix(matrix), NULL);
+			return (ft_freematrix(matrix), NULL);
 		i++;
 	}
 	matrix[i] = NULL;
