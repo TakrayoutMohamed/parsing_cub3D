@@ -142,6 +142,68 @@ void	check_map(char **map)
 	int		i;
 	int		j;
 
+
+	//check if the map has only accepted characters 0, 1, ' ', N, E, W and S
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
+			{
+				if (map[i][j] != 'N' && map[i][j] != 'W' && map[i][j] != 'E' && map[i][j] != 'S')
+				{
+					(printf("thier is non accepted character in line : %d\n", i + 1), exit(1), 0);// here the map not accepted
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+
+	//check if the map has a player
+	int	player_exits;
+
+	player_exits = 0;
+	i = 0;
+	while (player_exits == 0 && map[i])
+	{
+		j = 0;
+		while (player_exits == 0 && map[i][j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'S')
+			{
+				player_exits = 1;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (player_exits == 0)
+		(printf("thier is no player in the map\n"), exit(1), 0);// here the map not accepted
+	//check if the map has only one player
+
+	int	players_num;
+
+	players_num = 0;
+	i = 0;
+	while (players_num < 2 && map[i])
+	{
+		j = 0;
+		while (players_num < 2 && map[i][j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'S')
+			{
+				players_num++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (players_num > 1)
+		(printf("thier is a second player in the map at line : %d\n", i), exit(1), 0);// here the map not accepted
+	// copy the map and replace the player and empty spaces(0) with x and spaces(' ') with y
 	copymap = ft_matrixcpy((const char **) map);
 	i = 0;
 	while (copymap[i])
