@@ -8,15 +8,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <mlx.h>
-# define PI 3.14
-#define RIGHT_ARROW  124
-#define LEFT_ARROW  123
-#define TOP_ARROW  126
-#define BOTTOM_ARROW  125
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
-# define PLAYER_X WIN_WIDTH/2
-# define PLAYER_Y WIN_HEIGHT/2
 
 typedef struct	s_cub
 {
@@ -29,27 +20,20 @@ typedef struct	s_cub
 	char	*c;
 } t_cub;
 
-typedef struct s_coorfinates
-{
-	double	x;
-	double	y;
-	double	z;
-} t_coord;
-
-typedef struct s_data {
-	int		x_player;
-	int		y_player;
-	void	*mlx;
-	void	*win;
-	void	*img;
-} t_data;
-
-
-
 //here the functions that is going to be used in the parsing
 
 t_cub	*parse_data(int argc, char **argv);
 bool	is_accepted_data(char *argv);
 char	**ft_matrixcpy(const char **map);
+
+char	*ft_strjoin_free(char *s1, char *s2);
+char	*ft_strtrim_free(char *s1, char *to_trim);
+t_cub	*initializing_cub_struct(void);
+bool	is_textures_floor_ceiles_setted(t_cub *cub);
+void	set_cub_data(t_cub *cub, char *map);
+void	set_textures_paths(t_cub *cub, char *line);
+void	set_map(t_cub *cub, char *str);
+bool	has_double_new_line(char *str);
+void	check_map(char **map);
 
 #endif

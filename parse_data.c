@@ -33,6 +33,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (s1);
 }
 
+/*romove the string to_trinm  from the start and end of s1*/
 char	*ft_strtrim_free(char *s1, char *to_trim)
 {
 	char	*tmp;
@@ -43,6 +44,10 @@ char	*ft_strtrim_free(char *s1, char *to_trim)
 	return (s1);
 }
 
+/*
+*  allocating to the elemonts of the structor t_cub 
+*  and initialisating it to null
+*/
 t_cub	*initializing_cub_struct(void)
 {
 	t_cub	*cub;
@@ -60,6 +65,7 @@ t_cub	*initializing_cub_struct(void)
 	return (cub);
 }
 
+/*return true if the info of the texutes so, no, ea, we, f, c has been setted*/
 bool	is_textures_floor_ceiles_setted(t_cub *cub)
 {
 	if (cub->c == NULL)
@@ -77,6 +83,7 @@ bool	is_textures_floor_ceiles_setted(t_cub *cub)
 	return (true);
 }
 
+/*set the values of the textures data, also  f anc c colors */
 void	set_textures_paths(t_cub *cub, char *line)
 {
 	char	**matrix;
@@ -114,6 +121,7 @@ void	set_textures_paths(t_cub *cub, char *line)
 	ft_freematrix(matrix);
 }
 
+/*set the data of the map in its place */
 void	set_map(t_cub *cub, char *str)
 {
 	cub->map = ft_split(str, '\n');
@@ -121,6 +129,7 @@ void	set_map(t_cub *cub, char *str)
 		return ; /*here i should print an error message end exit*/
 }
 
+/*return true if the str has newline folowed by new line*/
 bool	has_double_new_line(char *str)
 {
 	if (!str)
@@ -135,7 +144,8 @@ bool	has_double_new_line(char *str)
 }
 
 
-
+/* this file is a fully dirty one it countiens almost 
+*  all the functions that checks if the map is accepted */
 void	check_map(char **map)
 {
 	char	**copymap;
@@ -182,6 +192,7 @@ void	check_map(char **map)
 	}
 	if (player_exits == 0)
 		(printf("thier is no player in the map\n"), exit(1), 0);// here the map not accepted
+	
 	//check if the map has only one player
 
 	int	players_num;
@@ -203,6 +214,7 @@ void	check_map(char **map)
 	}
 	if (players_num > 1)
 		(printf("thier is a second player in the map at line : %d\n", i), exit(1), 0);// here the map not accepted
+	
 	// copy the map and replace the player and empty spaces(0) with x and spaces(' ') with y
 	copymap = ft_matrixcpy((const char **) map);
 	i = 0;
@@ -232,11 +244,14 @@ void	check_map(char **map)
 		}
 		j++;
 	}
+
 	// printf("**********************start map********\n");
 	// print_matrix(copymap);
 	// printf("\n**********************end map********\n");
 	// exit(44);
+	
 	//check the bottom of the map
+	
 	int nbrlines1;
 
 	nbrlines1 = 0;
@@ -345,22 +360,9 @@ void	check_map(char **map)
 		i++;
 	}
 
-
-	/*check if the map sorrounded by walls or spaces*/
-			/*check if the first str in the map is all ones and spaces*/
-		/*to verify if the map is sourrounded by wals even if its with spaces simply 
-		* you are gonna use the backtracking algo and make every empty place (0) 
-		* and every space (' ') replaced with a simple 'x' ,
-		* than check if the sides are all wals and spaces (' ')
-		* repeat the next two moves untill thier are no empty spaces(0) in the map
-			* if thier is a place where thier is an empty place (0) than
-			* take it as the start of back tracking and run it egain
-		*/
-	/*check if the map has only the accepted characters*/
-
-
 }
 
+/*here all the data of the t_cub struct is gonna be setting*/
 void	set_cub_data(t_cub *cub, char *map)
 {
 	char	*line;
@@ -416,6 +418,7 @@ void	set_cub_data(t_cub *cub, char *map)
 	check_map(cub->map);
 }
 
+/*here is the main function of the parsing*/
 t_cub	*parse_data(int argc, char **argv)
 {
 	t_cub	*cub;
@@ -432,12 +435,5 @@ t_cub	*parse_data(int argc, char **argv)
 	}
 	cub = initializing_cub_struct();
 	set_cub_data(cub, argv[1]);
-	// convert_map_into_string(argv[1]);
-	// split the file by newline
-	// free the convert_map_into_string(argv[1])'s return
-	// get the value of textures by spliting the first 6 lines by space
-		//free the return of the splite by space
-	// get the map value using the last non_null pointer in the matrix
-	// free the matrix which is the return of the split by newline
 	return (cub);
 }

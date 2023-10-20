@@ -8,13 +8,14 @@ SRC_MAIN = main.c
 OBJ = $(SRC:.c=.o)
 OBJ_MAIN = $(SRC_MAIN:.c=.o)
 RM = rm -rf
+HEADERS = ./libcub3d.h
 
 all : $(NAME)
 
 $(NAME): $(LIBCUB) $(OBJ_MAIN)
 		$(CC) $(OBJ_MAIN) $(LIBCUB) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 	@echo "the file $@ has been created from $<"
 
@@ -32,7 +33,7 @@ clean:
 fclean: clean
 		@$(RM) $(NAME)
 		@make -C ./libft fclean
-		@echo "the executable client and server has been deleted"
+		@echo "the executable $(NAME) has been deleted"
 	
 re: fclean all
 

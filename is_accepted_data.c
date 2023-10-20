@@ -1,6 +1,6 @@
 #include "./libcub3d.h"
 
-//return true if the extension is *.cub 
+/*return true if the extension is *.cub*/
 bool	is_accepted_extension(char *map)
 {
 	int	len;
@@ -22,9 +22,7 @@ bool	is_accepted_extension(char *map)
 
 bool	is_accepted_data(char *map_path)
 {
-	//is file map_path is .cub extension
 	if(!is_accepted_extension(map_path))
 		return (false);
-	//is all the characters are acceptable 0 , 1 " " N S E W
 	return (true);
 }
