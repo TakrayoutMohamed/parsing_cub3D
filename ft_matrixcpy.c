@@ -6,11 +6,11 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:20:18 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/19 20:52:59 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:15:27 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libcub3d.h"
+#include "./libpars.h"
 
 /*copy a matrix and return a pointer to its copy*/
 char	**ft_matrixcpy(const char **map)

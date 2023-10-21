@@ -1,5 +1,5 @@
-#ifndef LIBCUB3D_H
-# define LIBCUB3D_H
+#ifndef LIBPARS_H
+# define LIBPARS_H
 # include "./libft/libft.h"
 # include <stdio.h>
 # include <stdbool.h>
@@ -19,6 +19,7 @@ typedef struct	s_cub
 	char	*f;
 	char	*c;
 } t_cub;
+# include "./error_handler/liberror.h"
 
 //here the functions that is going to be used in the parsing
 
@@ -30,9 +31,9 @@ char	*ft_strjoin_free(char *s1, char *s2);
 char	*ft_strtrim_free(char *s1, char *to_trim);
 t_cub	*initializing_cub_struct(void);
 bool	is_textures_floor_ceiles_setted(t_cub *cub);
-void	set_cub_data(t_cub *cub, char *map);
-void	set_textures_paths(t_cub *cub, char *line);
-void	set_map(t_cub *cub, char *str);
+bool	set_cub_data(t_cub *cub, char *map);
+bool	set_textures_paths(t_cub *cub, char *line);
+bool	set_map(t_cub *cub, char *str);
 bool	has_double_new_line(char *str);
 void	check_map(char **map);
 

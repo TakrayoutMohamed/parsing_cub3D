@@ -1,4 +1,4 @@
-#include "./libcub3d.h"
+#include "./libpars.h"
 
 /*return true if the extension is *.cub*/
 bool	is_accepted_extension(char *map)

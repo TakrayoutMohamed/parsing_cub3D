@@ -1,4 +1,4 @@
-#include "./libcub3d.h"
+#include "./libpars.h"
 
 void	print_matrix(char **matrix)
 {
