@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libpars.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
+/*   Updated: 2023/10/22 21:28:18 by mohtakra         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBPARS_H
 # define LIBPARS_H
+# include "./error_handler/liberror.h"
 # include "./libft/libft.h"
 # include <stdio.h>
 # include <stdbool.h>
@@ -9,7 +22,7 @@
 # include <string.h>
 # include <mlx.h>
 
-typedef struct	s_cub
+typedef struct s_cub
 {
 	char	**map;
 	char	*no;
@@ -18,17 +31,13 @@ typedef struct	s_cub
 	char	*ea;
 	char	*f;
 	char	*c;
-} t_cub;
-# include "./error_handler/liberror.h"
+}	t_cub;
 
-//here the functions that is going to be used in the parsing
-
+void	clean_struct_exit(t_cub *cub);
 t_cub	*parse_data(int argc, char **argv);
 bool	is_accepted_data(char *argv);
 char	**ft_matrixcpy(const char **map);
-
 char	*ft_strjoin_free(char *s1, char *s2);
-char	*ft_strtrim_free(char *s1, char *to_trim);
 t_cub	*initializing_cub_struct(void);
 bool	is_textures_floor_ceiles_setted(t_cub *cub);
 bool	set_cub_data(t_cub *cub, char *map);
@@ -36,5 +45,13 @@ bool	set_textures_paths(t_cub *cub, char *line);
 bool	set_map(t_cub *cub, char *str);
 bool	has_double_new_line(char *str);
 bool	check_map(char **map);
+bool	has_accepted_chars(char **map);
+bool	has_player(char **map);
+bool	has_only_one_player(char **map);
+bool	is_top_wall(char **copymap);
+bool	is_bottom_wall(char **copymap);
+bool	is_right_left_wall(char **copymap);
+bool	is_open_long_line(char **copymap);
+bool	is_open_inside(char **copymap);
 
 #endif

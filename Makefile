@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
+#    Updated: 2023/10/22 21:28:33 by mohtakra         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
 CC = cc
-CFLAGS=  -Imlx 
+CFLAGS=  -Wall -Wextra -Werror -Imlx 
 LIBPARS = libpars.a
 LIBFT = ./libft/libft.a
 
@@ -12,10 +24,13 @@ ERRPATH=./error_handler/
 HEADERS = ./libpars.h $(ERRPATH)liberror.h
 
 SRC= parse_data.c is_accepted_data.c ft_matrixcpy.c \
-	 check_map.c ft_strjoin_free.c ft_strtrim_free.c has_double_new_line.c \
+	 check_map.c ft_strjoin_free.c has_double_new_line.c \
 	 set_map.c set_textures_paths.c set_cub_data.c is_textures_floor_ceiles_setted.c \
 	 initializing_cub_struct.c \
-	 $(ERRPATH)clean_struct_exit.c $(ERRPATH)print_error.c
+	 has_accepted_chars.c has_player.c has_only_one_player.c is_top_wall.c is_bottom_wall.c\
+	 is_right_left_wall.c is_open_long_line.c is_open_inside.c\
+	 clean_struct_exit.c \
+	 $(ERRPATH)print_error.c
 all : $(NAME)
 
 $(NAME): $(LIBPARS) $(OBJ_MAIN)

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_data.c                                       :+:      :+:    :+:   */
+/*   is_top_wall.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 21:21:30 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:33:31 by mohtakra         ###   ########.fr       */
+/*   Created: 2023/10/22 21:08:17 by mohtakra          #+#    #+#             */
+/*   Updated: 2023/10/22 21:08:19 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpars.h"
 
-/*here is the main function of the parsing*/
-t_cub	*parse_data(int argc, char **argv)
+/*check the top line of the map*/
+bool	is_top_wall(char **copymap)
 {
-	t_cub	*cub;
+	int	j;
 
-	if (argc == 1 || argc > 2)
+	j = 0;
+	while (copymap[0][j])
 	{
-		ft_putstr_fd("Error :\n", 2);
-		ft_putstr_fd("exemple : \"./cub3D map.cub\"", 2);
-		exit(EXIT_FAILURE);
+		if (copymap[0][j] != '1' && copymap[0][j] != 'y')
+		{
+			print_error("the map is not sorounded by walls top\n", NULL);
+			return (false);
+		}
+		j++;
 	}
-	if (!is_accepted_data(argv[1]))
-	{
-		return (exit(EXIT_FAILURE), NULL);
-	}
-	cub = initializing_cub_struct();
-	if (!set_cub_data(cub, argv[1]))
-	{
-		return (clean_struct_exit(cub), NULL);
-	}
-	return (cub);
+	return (true);
 }
