@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:06 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:28:53 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/10/22 21:39:49 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ bool	is_accepted_extension(char *map)
 bool	is_accepted_data(char *map_path)
 {
 	if (!is_accepted_extension(map_path))
-		return (false);
+		return (print_error("Error\n", "map entered not accepted"), false);
 	return (true);
 }

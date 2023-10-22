@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:08:41 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:26:41 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/10/22 21:43:48 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ bool	check_map(char **map)
 		return (ft_freematrix(copymap), false);
 	if (is_open_long_line(copymap))
 		return (ft_freematrix(copymap), false);
-	return (true);
+	return (ft_freematrix(copymap), true);
 }
