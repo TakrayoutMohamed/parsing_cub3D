@@ -39,6 +39,8 @@ t_cub	*parse_data(int argc, char **argv)
 	}
 	cub = initializing_cub_struct();
 	if (!set_cub_data(cub, argv[1]))
+	{
 		return(clean_struct_exit(cub), NULL);
+	}
 	return (cub);
 }

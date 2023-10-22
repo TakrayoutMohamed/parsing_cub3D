@@ -35,6 +35,6 @@ bool	set_cub_data(t_cub *cub, char *map);
 bool	set_textures_paths(t_cub *cub, char *line);
 bool	set_map(t_cub *cub, char *str);
 bool	has_double_new_line(char *str);
-void	check_map(char **map);
+bool	check_map(char **map);
 
 #endif

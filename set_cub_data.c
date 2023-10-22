@@ -41,7 +41,7 @@ bool	set_cub_data(t_cub *cub, char *map)
 		line = get_next_line(map_fd);
 	}
 	close(map_fd);
-	/*check if the map is acceptable*/
-	check_map(cub->map);
+	if (!set_map(cub, map_in_str) || !check_map(cub->map))
+		return (free(map_in_str), free(line), false);
 	return (free(map_in_str), free(line), true);
 }
