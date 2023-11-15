@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:06:52 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/03/17 04:53:55 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/16 00:47:13 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ static char	*get_till_new_line(int fd, char *rest)
 static char	*rest_after_line(char *str)
 {
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
 	if (!str)
 		return (NULL);
 	while (str[i] && str[i] != '\n')

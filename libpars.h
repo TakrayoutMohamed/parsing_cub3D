@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libpars.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:28:18 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/16 00:51:24 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <math.h>
 # include <unistd.h>
 # include <string.h>
-# include <mlx.h>
 
 typedef struct s_cub
 {

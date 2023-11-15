@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
+#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
-#    Updated: 2023/10/22 21:28:33 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/11/16 00:50:46 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = cc
-CFLAGS=  -Wall -Wextra -Werror -Imlx 
+CFLAGS=  -Wall -Wextra -Werror
 LIBPARS = libpars.a
 LIBFT = ./libft/libft.a
 
