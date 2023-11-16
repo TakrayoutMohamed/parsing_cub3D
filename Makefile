@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
+#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
-#    Updated: 2023/11/16 01:02:01 by takra            ###   ########.fr        #
+#    Updated: 2023/11/16 16:35:59 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME): $(LIBPARS) $(OBJ_MAIN)
 $(LIBPARS) : $(LIBFT)  $(OBJ)
 		ar rc $@  $(OBJ) $(LIBFT)
 
-$(LIBFT) : ./libft/Makefile
+$(LIBFT) : ./libft/libft.h
 		@make -C ./libft all
 
 clean:

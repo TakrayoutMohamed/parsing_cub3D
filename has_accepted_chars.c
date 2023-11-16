@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:07:27 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:07:33 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:24:47 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static bool	is_valid_char(char c)
 	if (c == 'E')
 		return (true);
 	if (c == 'S')
+		return (true);
+	if (c == 'P') //this one should be removed at the end 
 		return (true);
 	return (false);
 }
