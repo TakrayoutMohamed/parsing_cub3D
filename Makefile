@@ -6,7 +6,7 @@
 #    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
-#    Updated: 2023/11/16 00:50:46 by takra            ###   ########.fr        #
+#    Updated: 2023/11/16 01:02:01 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC= parse_data.c is_accepted_data.c ft_matrixcpy.c \
 all : $(NAME)
 
 $(NAME): $(LIBPARS) $(OBJ_MAIN)
-		$(CC) $(OBJ_MAIN) $(LIBPARS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+		$(CC) $(OBJ_MAIN) $(LIBPARS) $(LIBFT) -o $(NAME)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
