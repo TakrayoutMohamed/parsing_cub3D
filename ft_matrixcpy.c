@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_matrixcpy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 01:20:18 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/21 15:15:27 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/17 03:08:10 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_matrixcpy(const char **map)
 	i = 0;
 	while (map[i])
 		i++;
-	matrix = (char **)malloc(sizeof(char *) * i + 1);
+	matrix = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!matrix)
 		return (NULL);
 	i = 0;
