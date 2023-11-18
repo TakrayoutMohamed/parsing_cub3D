@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:37 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:44:33 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:26:31 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	print_data(t_cub *cub)
 	printf("SO texture is |%s|\n",cub->so);
 	printf("WE texture is |%s|\n",cub->we);
 	printf("EA texture is |%s|\n",cub->ea);
-	printf("F texture is |%s|\n",cub->f);
-	printf("C texture is |%s|\n",cub->c);
+	printf("F texture is |%u|\n",cub->f);
+	printf("C texture is |%u|\n",cub->c);
 	printf("**********************start map********\n");
 	print_matrix(cub->map);
 	printf("\n**********************end map********\n");

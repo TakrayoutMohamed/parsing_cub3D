@@ -6,7 +6,7 @@
 /*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/16 00:51:24 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/18 00:12:38 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 
 typedef struct s_cub
 {
-	char	**map;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
+	char		**map;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	__uint32_t	f;
+	__uint32_t	c;
 }	t_cub;
 
 void	clean_struct_exit(t_cub *cub);
@@ -52,5 +52,6 @@ bool	is_bottom_wall(char **copymap);
 bool	is_right_left_wall(char **copymap);
 bool	is_open_long_line(char **copymap);
 bool	is_open_inside(char **copymap);
+bool	is_int(char *str, int converted_to_int);
 
 #endif

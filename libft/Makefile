@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
+#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/10/18 16:45:49 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/11/18 00:23:33 by takra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC=cc
 CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 SRC = ft_strchr.c ft_strcmp.c ft_strncmp.c ft_strdup.c ft_strjoin.c\
-	ft_strlen.c ft_strtrim.c ft_split.c ft_strlcpy.c\
+	ft_strlen.c ft_strtrim.c ft_split.c ft_strlcpy.c ft_atoi.c\
 	ft_freematrix.c \
 	ft_putchar_fd.c ft_putstr_fd.c\
 	ft_putendl_fd.c ft_putnbr_fd.c \
