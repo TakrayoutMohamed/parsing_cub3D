@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_textures_paths.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:50 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/18 00:59:12 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/20 13:50:17 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ bool	set_textures_paths(t_cub *cub, char *line)
 	if (!matrix[0] || !matrix[1] || matrix[2] != NULL)
 	{
 		ft_putstr_fd("eeeeerrrror from set_textures_paths part 1 \n", 2);
-		printf("mat[0]=%s, mat[1]=%s, mat[2]=%s \n",matrix[0],matrix[1],matrix[2]);
+		// printf("mat[0]=%s, mat[1]=%s, mat[2]=%s \n",matrix[0],matrix[1],matrix[2]);
 		return (free(str), ft_freematrix(matrix), false);
 	}
 	if (!set_textures(cub, matrix) && !set_floor_ceil(cub, matrix))
