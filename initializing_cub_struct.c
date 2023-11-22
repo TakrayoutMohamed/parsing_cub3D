@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initializing_cub_struct.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:00 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/18 00:16:48 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/22 15:29:53 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_cub	*initializing_cub_struct(void)
 	cub->we = NULL;
 	cub->ea = NULL;
 	cub->so = NULL;
-	cub->f = 0x0;
-	cub->c = 0x0;
+	cub->f = __UINT32_MAX__;
+	cub->c = __UINT32_MAX__;
 	cub->map = NULL;
 	return (cub);
 }

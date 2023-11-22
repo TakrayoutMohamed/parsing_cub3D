@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:50 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/20 13:50:17 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:22:03 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 static char	**ft_strtrim_matrix(char **matrix)
 {
 	char	**tmp_matrix;
+	int		matrix_lines;
 
-	tmp_matrix = (char **)malloc (sizeof(char *) * 4);
+	matrix_lines = 0;
+	while (matrix[matrix_lines] != NULL)
+		matrix_lines++;
+	tmp_matrix = (char **)malloc (sizeof(char *) * (matrix_lines + 1));
 	if (!tmp_matrix)
 		return (NULL);
 	tmp_matrix[0] = ft_strtrim(matrix[0], " ");
@@ -25,6 +29,7 @@ static char	**ft_strtrim_matrix(char **matrix)
 	tmp_matrix[3] = NULL;
 	return (tmp_matrix);
 }
+
 static __uint32_t	get_color(char **matrix_color)
 {
 	__uint32_t	color;
@@ -58,23 +63,23 @@ static bool	set_floor_ceil(t_cub *cub, char **matrix)
 	matrix_color = NULL;
 	i = 0;
 	matrix_color = ft_split(matrix[1], ',');
-	while(matrix_color[i])
+	while (matrix_color[i])
 		i++;
 	if (i != 3)
 		return (ft_freematrix(matrix_color), false);
-	if (!cub->f && ft_strcmp(matrix[0], "F") == 0)
+	if (cub->f == __UINT32_MAX__ && ft_strcmp(matrix[0], "F") == 0)
 	{
 		cub->f = get_color(matrix_color);
-		printf("here1 cub->f = %u\n", cub->f);
+		if (cub->f == __UINT32_MAX__)
+			return (ft_freematrix(matrix_color), false);
 	}
-	else if (!cub->c && ft_strcmp(matrix[0], "C") == 0)
+	else if (cub->c == __UINT32_MAX__ && ft_strcmp(matrix[0], "C") == 0)
 	{
 		cub->c = get_color(matrix_color);
-		printf("here2 cub->c = %u\n", cub->c);
+		if (cub->c == __UINT32_MAX__)
+			return (ft_freematrix(matrix_color), false);
 	}
 	else
-		return (ft_freematrix(matrix_color), false);
-	if (cub->c == __UINT32_MAX__ || cub->f == __UINT32_MAX__)
 		return (ft_freematrix(matrix_color), false);
 	return (ft_freematrix(matrix_color), true);
 }
@@ -111,7 +116,6 @@ bool	set_textures_paths(t_cub *cub, char *line)
 	if (!matrix[0] || !matrix[1] || matrix[2] != NULL)
 	{
 		ft_putstr_fd("eeeeerrrror from set_textures_paths part 1 \n", 2);
-		// printf("mat[0]=%s, mat[1]=%s, mat[2]=%s \n",matrix[0],matrix[1],matrix[2]);
 		return (free(str), ft_freematrix(matrix), false);
 	}
 	if (!set_textures(cub, matrix) && !set_floor_ceil(cub, matrix))

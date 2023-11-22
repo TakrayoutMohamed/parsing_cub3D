@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_int.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 23:44:54 by takra             #+#    #+#             */
-/*   Updated: 2023/11/18 00:14:01 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/22 16:14:49 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,8 @@ bool	is_int(char *str, int converted_to_int)
 			minus = 1;
 	}
 	while (str[j] == '0' && str[j + 1] != '\0')
-			j++;
+		j++;
 	if ((int)ft_strlen(str + j) + minus != ft_nbrlen(converted_to_int))
 		return (false);
-	// while (*str)
-	// {
-	// 	str++;
-	// }
 	return (true);
 }

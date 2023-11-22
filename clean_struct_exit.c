@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_struct_exit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:12 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/18 00:15:58 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/22 16:15:37 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ void	clean_struct_exit(t_cub *cub)
 {
 	if (cub)
 	{
-		// if (cub->c)
-		// 	free(cub->c);
-		// if (cub->f)
-		// 	free(cub->f);
 		if (cub->ea)
 			free(cub->ea);
 		if (cub->we)
@@ -32,5 +28,5 @@ void	clean_struct_exit(t_cub *cub)
 			ft_freematrix(cub->map);
 		free(cub);
 	}
-	exit(EXIT_FAILURE);
+	exit(0);
 }
