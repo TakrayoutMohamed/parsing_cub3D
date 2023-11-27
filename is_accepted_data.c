@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:06 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:39:49 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:07:20 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	is_accepted_extension(char *map)
 		len--;
 		map--;
 	}
-	if (ft_strcmp(map, ".cub") == 0)
+	if (ft_strcmp(map, ".cub") == 0 && *(--map) != '/')
 		return (true);
 	return (false);
 }
@@ -35,6 +35,10 @@ bool	is_accepted_extension(char *map)
 bool	is_accepted_data(char *map_path)
 {
 	if (!is_accepted_extension(map_path))
-		return (print_error("Error\n", "map entered not accepted"), false);
+	{
+		print_error("Error\n", "map entered not accepted \"");
+		print_error(map_path, "\"\n");
+		return (false);
+	}
 	return (true);
 }
