@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_textures_floor_ceiles_setted.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:25 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/22 15:27:26 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/28 23:31:03 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /*return true if the info of the texutes so, no, ea, we, f, c has been setted*/
 bool	is_textures_floor_ceiles_setted(t_cub *cub)
 {
-	if (cub->c == UINT32_MAX)
+	if (cub->c == __UINT32_MAX__)
 		return (false);
-	if (cub->f == UINT32_MAX)
+	if (cub->f == __UINT32_MAX__)
 		return (false);
 	if (cub->ea == NULL)
 		return (false);

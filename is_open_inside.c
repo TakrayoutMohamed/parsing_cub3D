@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_open_inside.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:09:28 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:29:12 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/29 00:37:55 by takra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,27 @@ static bool	is_up_bottom_wall(char *up, char *bottom, int index)
 	return (true);
 }
 
-/* return true if the right and left chars of the index are walls
+/* return true if the right chars of the index are walls
 *  else return false
 */
-static bool	right_left_char(char left, char right, int line)
+static bool	is_right_char(char right, int line)
 {
-	if (left == 'x' || right == 'x')
+	if (right == 'x')
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("there is a ' ' next to 0 or player in line : ", 2);
+		ft_putnbr_fd(line, 2);
+		return (false);
+	}
+	return (true);
+}
+
+/* return true if the left chars of the index are walls
+*  else return false
+*/
+static bool	is_left_char(char left, int line)
+{
+	if (left == 'x')
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("there is a ' ' next to 0 or player in line : ", 2);
@@ -105,16 +120,19 @@ bool	is_open_inside(char **copymap)
 		return (true);
 	while (++i && copymap[i] && copymap[i + 1])
 	{
-		j = -1;
-		while (++j > -2 && copymap[i][j])
+		j = 0;
+		while (copymap[i][j])
 		{
-			if (copymap[i][j] != 'y')
-				continue ;
-			if (!is_up_bottom_wall(copymap[i - 1], copymap[i + 1], j) || \
-			!right_left_char(copymap[i][j - 1], copymap[i][j + 1], i + 1))
+			if (copymap[i][j] == 'y')
 			{
-				return (ft_putnbr_fd(i + 1, 2), true);
+				if (!is_up_bottom_wall(copymap[i - 1], copymap[i + 1], j))
+					return (ft_putnbr_fd(i + 1, 2), true);
+				if (j != 0 && !is_left_char(copymap[i][j - 1], j))
+					return (ft_putnbr_fd(i + 1, 2), true);
+				if (j != (int)ft_strlen(copymap[i]) && !is_right_char(copymap[i][j + 1], j))
+					return (ft_putnbr_fd(i + 1, 2), true);
 			}
+			j++;
 		}
 	}
 	return (false);
