@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libpars.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/18 00:12:38 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/29 11:13:38 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_cub
 	__uint32_t	c;
 }	t_cub;
 
-void	clean_struct_exit(t_cub *cub);
+void	clean_struct(t_cub *cub);
 t_cub	*parse_data(int argc, char **argv);
-bool	is_accepted_data(char *argv);
+bool	is_accepted_extension(char *argv);
 char	**ft_matrixcpy(const char **map);
 char	*ft_strjoin_free(char *s1, char *s2);
 t_cub	*initializing_cub_struct(void);

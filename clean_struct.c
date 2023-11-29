@@ -6,13 +6,13 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:12 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/22 16:15:37 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:03:46 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpars.h"
 
-void	clean_struct_exit(t_cub *cub)
+void	clean_struct(t_cub *cub)
 {
 	if (cub)
 	{
@@ -28,5 +28,4 @@ void	clean_struct_exit(t_cub *cub)
 			ft_freematrix(cub->map);
 		free(cub);
 	}
-	exit(0);
 }

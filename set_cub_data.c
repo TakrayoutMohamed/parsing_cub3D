@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:34:32 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:35:30 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:00:44 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	open_map_file(char *map)
 
 	map_fd = open(map, O_RDONLY, 0666);
 	if (map_fd == -1)
-		print_error("Error :\ncouldn't open the file ", map);
+		print_error("Error :\ncouldn't open the file : ", map);
 	return (map_fd);
 }
 
@@ -39,7 +39,7 @@ bool	set_cub_data(t_cub *cub, char *map)
 		if (cub->map == NULL && !is_textures_floor_ceiles_setted(cub))
 		{
 			if (ft_strcmp(line, "\n") != 0 && !set_textures_paths(cub, line))
-				return (print_error("Error\n", "error in textures c or f"), \
+				return (print_error("Error\n", "In textures c or f"), \
 				free(line), close(map_fd), false);
 		}
 		else

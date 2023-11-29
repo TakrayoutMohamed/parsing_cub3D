@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:08:41 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:43:48 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:54:54 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	new_map(char **copymap)
 	int	j;
 
 	i = 0;
+	if (copymap == NULL)
+		return ;
 	while (copymap[i])
 	{
 		j = 0;
@@ -43,6 +45,8 @@ bool	check_map(char **map)
 {
 	char	**copymap;
 
+	if (map == NULL)
+		return (ft_putstr_fd("Error :\nEmpty map!!", 2), false);
 	if (!has_accepted_chars(map))
 		return (false);
 	if (!has_player(map))
@@ -50,6 +54,8 @@ bool	check_map(char **map)
 	if (!has_only_one_player(map))
 		return (false);
 	copymap = ft_matrixcpy((const char **) map);
+	if (copymap == NULL)
+		return (false);
 	new_map(copymap);
 	if (!is_top_wall(copymap) || !is_bottom_wall(copymap))
 		return (ft_freematrix(copymap), false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takra <takra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:37 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/29 00:19:06 by takra            ###   ########.fr       */
+/*   Updated: 2023/11/29 11:10:25 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,19 @@ void	print_data(t_cub *cub)
 	printf("\n**********************end map********\n");
 }
 
-// void foo(void)
-// {
-// 	system("leaks cub3D");
-// }
+void foo(void)
+{
+	system("leaks cub3D");
+}
 
 int	main(int argc, char **argv)
 {
 	t_cub	*map_data;
 
-	// atexit(foo);
+	atexit(foo);
 	map_data = parse_data(argc, argv);
-	print_data(map_data);
-	clean_struct_exit(map_data);
+	if (map_data)
+		print_data(map_data);
+	clean_struct(map_data);
 	return (0);
 }
