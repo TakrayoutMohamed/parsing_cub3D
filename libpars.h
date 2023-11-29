@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/29 11:13:38 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:19:06 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ bool	is_top_wall(char **copymap);
 bool	is_bottom_wall(char **copymap);
 bool	is_right_left_wall(char **copymap);
 bool	is_open_long_line(char **copymap);
+bool	is_up_bottom_wall(char *up, char *bottom, int index);
 bool	is_open_inside(char **copymap);
 bool	is_int(char *str, int converted_to_int);
 
