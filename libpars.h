@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/29 11:19:06 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:09:37 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ bool	is_open_long_line(char **copymap);
 bool	is_up_bottom_wall(char *up, char *bottom, int index);
 bool	is_open_inside(char **copymap);
 bool	is_int(char *str, int converted_to_int);
+int		count_verguls(char *str);
 
 #endif

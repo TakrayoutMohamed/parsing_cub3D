@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:50 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/22 16:22:03 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:59:26 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static bool	set_floor_ceil(t_cub *cub, char **matrix)
 	matrix_color = ft_split(matrix[1], ',');
 	while (matrix_color[i])
 		i++;
-	if (i != 3)
+	if (i != 3 || count_verguls(matrix[1]) != 2)
 		return (ft_freematrix(matrix_color), false);
 	if (cub->f == __UINT32_MAX__ && ft_strcmp(matrix[0], "F") == 0)
 	{

@@ -6,7 +6,7 @@
 #    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
-#    Updated: 2023/11/29 11:19:53 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/12/02 20:10:09 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC= parse_data.c is_accepted_extension.c ft_matrixcpy.c \
 	 initializing_cub_struct.c \
 	 has_accepted_chars.c has_player.c has_only_one_player.c is_top_wall.c is_bottom_wall.c\
 	 is_right_left_wall.c is_open_long_line.c is_up_bottom_wall.c is_open_inside.c is_int.c\
-	 clean_struct.c \
+	 count_verguls.c clean_struct.c \
 	 $(ERRPATH)print_error.c
 all : $(NAME)
 
