@@ -6,19 +6,15 @@
 #    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
-#    Updated: 2023/12/02 20:10:09 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/12/04 12:34:50 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+NAME = libpars.a
 CC = cc
 CFLAGS=  -Wall -Wextra -Werror
-LIBPARS = libpars.a
 LIBFT = ./libft/libft.a
-
-SRC_MAIN = main.c
 OBJ = $(SRC:.c=.o)
-OBJ_MAIN = $(SRC_MAIN:.c=.o)
 RM = rm -rf
 ERRPATH=./error_handler/
 HEADERS = ./libpars.h $(ERRPATH)liberror.h
@@ -33,29 +29,27 @@ SRC= parse_data.c is_accepted_extension.c ft_matrixcpy.c \
 	 $(ERRPATH)print_error.c
 all : $(NAME)
 
-$(NAME): $(LIBPARS) $(OBJ_MAIN)
-		$(CC) $(OBJ_MAIN) $(LIBPARS) $(LIBFT) -o $(NAME)
-
 %.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "the file $@ has been created from $<"
 
-$(LIBPARS) : $(LIBFT)  $(OBJ)
-		ar rc $@  $(OBJ) $(LIBFT)
+$(NAME) : $(LIBFT)  $(OBJ)
+		@ar rc $@  $(OBJ) $(LIBFT)
+		@echo "the archieve $(NAME) has been created"
 
 $(LIBFT) : ./libft/libft.h
 		@make -C ./libft all
 
 clean:
-		@$(RM) $(OBJ) $(OBJ_MAIN) $(LIBPARS)
+		@$(RM) $(OBJ) $(NAME)
 		@make -C ./libft clean
 		@echo "all the .o has been deleted successfully"
 
 fclean: clean
 		@$(RM) $(NAME)
 		@make -C ./libft fclean
-		@echo "the executable $(NAME) has been deleted"
+		@echo "the archieve $(NAME) has been deleted"
 	
 re: fclean all
 
-.PHONY : clean $(NAME) $(LIBPARS) $(LIBFT) all fclean bonus re
+.PHONY : clean $(NAME) $(LIBFT) all fclean bonus re
