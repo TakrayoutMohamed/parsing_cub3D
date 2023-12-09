@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:34:32 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/29 11:00:44 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:45:09 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ int	open_map_file(char *map)
 bool	set_cub_data(t_cub *cub, char *map)
 {
 	char	*line;
-	char	*map_in_str;
 	int		map_fd;
 
-	map_in_str = NULL;
 	map_fd = open_map_file(map);
 	if (map_fd == -1)
 		return (false);
@@ -42,12 +40,14 @@ bool	set_cub_data(t_cub *cub, char *map)
 				return (print_error("Error\n", "In textures c or f"), \
 				free(line), close(map_fd), false);
 		}
-		else
-			map_in_str = ft_strjoin_free(map_in_str, line);
+		else if (ft_strcmp(line, "\n") != 0)
+			break ;
 		free(line);
 		line = get_next_line(map_fd);
 	}
-	if (!set_map(cub, map_in_str) || !check_map(cub->map))
-		return (close(map_fd), free(map_in_str), free(line), false);
-	return (close(map_fd), free(map_in_str), free(line), true);
+	if (!set_map(cub, line, map_fd) || !check_map(cub->map))
+	{
+		return (close(map_fd), false);
+	}
+	return (close(map_fd), true);
 }

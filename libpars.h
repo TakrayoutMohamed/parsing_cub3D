@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/12/02 20:09:37 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:14:36 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_cub	*initializing_cub_struct(void);
 bool	is_textures_floor_ceiles_setted(t_cub *cub);
 bool	set_cub_data(t_cub *cub, char *map);
 bool	set_textures_paths(t_cub *cub, char *line);
-bool	set_map(t_cub *cub, char *str);
+bool	set_map(t_cub *cub, char *line, int map_fd);
 bool	has_double_new_line(char *str);
 bool	check_map(char **map);
 bool	has_accepted_chars(char **map);
