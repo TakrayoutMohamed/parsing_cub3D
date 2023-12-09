@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: takra <takra@student.42.fr>                +#+  +:+       +#+         #
+#    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 18:37:53 by mohtakra          #+#    #+#              #
-#    Updated: 2023/11/18 00:23:33 by takra            ###   ########.fr        #
+#    Updated: 2023/12/09 12:56:08 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ SRC = ft_strchr.c ft_strcmp.c ft_strncmp.c ft_strdup.c ft_strjoin.c\
 	ft_freematrix.c \
 	ft_putchar_fd.c ft_putstr_fd.c\
 	ft_putendl_fd.c ft_putnbr_fd.c \
+	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
+	ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+	ft_lstclear.c \
 	./get_next_line/get_next_line_utils.c \
 	./get_next_line/get_next_line.c
 
