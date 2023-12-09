@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:09:04 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:29:03 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:25:59 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	is_bottom_wall(char **copymap)
 	nbrlines1--;
 	while (copymap[nbrlines1][j])
 	{
-		if (copymap[nbrlines1][j] != '1' && copymap[nbrlines1][j] != 'y')
+		if (copymap[nbrlines1][j] != '1' && copymap[nbrlines1][j] != ' ')
 		{
 			print_error("the map is not sorounded by wals bottom\n", NULL);
 			return (false);

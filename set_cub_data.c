@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:34:32 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/12/09 18:45:09 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 21:14:46 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ bool	set_cub_data(t_cub *cub, char *map)
 		line = get_next_line(map_fd);
 	}
 	if (!set_map(cub, line, map_fd) || !check_map(cub->map))
-	{
 		return (close(map_fd), false);
-	}
 	return (close(map_fd), true);
 }

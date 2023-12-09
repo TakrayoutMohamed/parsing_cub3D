@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:46 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/12/09 17:42:11 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 21:25:31 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,18 @@ static char	**convert_list_to_matrix(t_list *lst)
 	return (matrix);
 }
 
-//i should remove has_double_new_line.c
+static bool	has_double_new_line(char *line, int line_nbr)
+{
+	if (ft_strcmp(line, "\n") == 0)
+	{
+		print_error("Error :", "new line in the map set_map() in line : ");
+		ft_putnbr_fd(line_nbr, 2);
+		ft_putstr_fd("\n", 2);
+		return (true);
+	}
+	return (false);
+}
+
 /*set the data of the map in its place */
 bool	set_map(t_cub *cub, char *line, int map_fd)
 {
@@ -56,12 +67,11 @@ bool	set_map(t_cub *cub, char *line, int map_fd)
 		str = ft_strtrim(line, "\n");
 		free(line);
 		ft_lstadd_back(&lst, ft_lstnew(str));
+		if (!has_accepted_chars(str, ft_lstsize(lst)))
+			return (ft_lstclear(&lst, del), false);
 		line = get_next_line(map_fd);
-		if (ft_strcmp(line, "\n") == 0)
-		{
-			print_error("Error :", "new line in the map set_map()");
+		if (has_double_new_line(line, ft_lstsize(lst)))
 			return (free(line), ft_lstclear(&lst, del), false);
-		}
 	}
 	cub->map = convert_list_to_matrix(lst);
 	ft_lstclear(&lst, del);

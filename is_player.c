@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
+/*   is_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 21:23:40 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/10/22 21:23:41 by mohtakra         ###   ########.fr       */
+/*   Created: 2023/12/09 19:48:56 by mohtakra          #+#    #+#             */
+/*   Updated: 2023/12/09 19:48:57 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libpars.h"
 
-/*join s1 with s2 and free the pointer to s1*/
-char	*ft_strjoin_free(char *s1, char *s2)
+bool	is_player(char c)
 {
-	char	*tmp;
-
-	tmp = s1;
-	s1 = ft_strjoin(s1, s2);
-	free(tmp);
-	return (s1);
+	if (c == 'N' || c == 'W')
+		return (true);
+	if (c == 'E' || c == 'S')
+		return (true);
+	return (false);
 }

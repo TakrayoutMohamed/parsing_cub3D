@@ -6,7 +6,7 @@
 #    By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 21:21:25 by mohtakra          #+#    #+#              #
-#    Updated: 2023/12/04 12:34:50 by mohtakra         ###   ########.fr        #
+#    Updated: 2023/12/09 22:04:07 by mohtakra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ RM = rm -rf
 ERRPATH=./error_handler/
 HEADERS = ./libpars.h $(ERRPATH)liberror.h
 
-SRC= parse_data.c is_accepted_extension.c ft_matrixcpy.c \
-	 check_map.c ft_strjoin_free.c has_double_new_line.c \
+SRC= parse_data.c is_accepted_extension.c \
+	 check_map.c \
 	 set_map.c set_textures_paths.c set_cub_data.c is_textures_floor_ceiles_setted.c \
 	 initializing_cub_struct.c \
-	 has_accepted_chars.c has_player.c has_only_one_player.c is_top_wall.c is_bottom_wall.c\
+	 has_accepted_chars.c has_only_one_player.c is_top_wall.c is_bottom_wall.c\
 	 is_right_left_wall.c is_open_long_line.c is_up_bottom_wall.c is_open_inside.c is_int.c\
+	 is_player.c \
 	 count_verguls.c clean_struct.c \
 	 $(ERRPATH)print_error.c
 all : $(NAME)

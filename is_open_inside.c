@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:09:28 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/11/29 11:17:51 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:26:29 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ bool	is_open_inside(char **copymap)
 		j = -1;
 		while (copymap[i][++j])
 		{
-			if (copymap[i][j] != 'y')
+			if (copymap[i][j] != ' ')
 				continue ;
 			if (!is_up_bottom_wall(copymap[i - 1], copymap[i + 1], j))
 				return (ft_putnbr_fd(i + 1, 2), true);
