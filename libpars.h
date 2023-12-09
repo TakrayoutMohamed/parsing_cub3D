@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:21:21 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/12/09 21:14:04 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/09 22:08:40 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_cub
 void	clean_struct(t_cub *cub);
 t_cub	*parse_data(int argc, char **argv);
 bool	is_accepted_extension(char *argv);
-char	*ft_strjoin_free(char *s1, char *s2);
 t_cub	*initializing_cub_struct(void);
 bool	is_textures_floor_ceiles_setted(t_cub *cub);
 bool	set_cub_data(t_cub *cub, char *map);
