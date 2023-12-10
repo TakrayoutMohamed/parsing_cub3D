@@ -6,7 +6,7 @@
 /*   By: mohtakra <mohtakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:09:28 by mohtakra          #+#    #+#             */
-/*   Updated: 2023/12/09 20:26:29 by mohtakra         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:16:15 by mohtakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 static bool	is_right_char(char right, int line)
 {
-	if (right == 'x')
+	if (right == '0' || is_player(right))
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("there is a ' ' next to 0 or player in column : ", 2);
@@ -33,7 +33,7 @@ static bool	is_right_char(char right, int line)
 */
 static bool	is_left_char(char left, int line)
 {
-	if (left == 'x')
+	if (left == '0' || is_player(left))
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("there is a ' ' next to 0 or player in column : ", 2);
@@ -52,7 +52,7 @@ static bool	is_first_wall(char **copymap)
 	j = 0;
 	while (copymap[0][j])
 	{
-		if (copymap[0][j] == 'y')
+		if (copymap[0][j] == ' ')
 		{
 			if (!is_up_bottom_wall(NULL, copymap[1], j))
 			{
@@ -76,7 +76,7 @@ static bool	is_last_wall(char **copymap)
 	j = 0;
 	while (copymap[i][j])
 	{
-		if (copymap[i][j] == 'y')
+		if (copymap[i][j] == ' ')
 		{
 			if (!is_up_bottom_wall(copymap[i - 1], NULL, j))
 			{
